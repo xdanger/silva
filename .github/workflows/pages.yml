@@ -32,7 +32,7 @@ jobs:
           destination: ./_site
 
       - name: Copy source .md files alongside generated HTML
-        run: rsync -am --include='*/' --include='*.md' --exclude='*' docs/ _site/
+        run: sudo rsync -rm --include='*/' --include='*.md' --exclude='*' docs/ _site/
 
       - uses: actions/upload-pages-artifact@v3
 
