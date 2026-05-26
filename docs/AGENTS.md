@@ -1,13 +1,35 @@
 # silva/ — Agent Instructions
 
+> ## ⚠️ PUBLIC BY DESIGN ⚠️
+>
+> 本目录会**同步到 GitHub public repo** 并通过 **GitHub Pages 公开发布**。所有 file 默认都被互联网索引、任何人可读。
+>
+> **任何含个人信息的文件都不应该放在这里。** 写文件前问自己："**GitHub Pages 一发布，这份文件会暴露什么不该让陌生人看到的东西？**" 不放心 → 不写到 silva，写到 `areas/`、`projects/`、`notes/`、`memory/`。
+>
+> **绝对不进 silva** 的内容：
+>
+> - Kros / 家人 / 第三方的真实姓名、邮箱、地址、电话、SSN / 护照号 / 账号 / 任何身份证号
+> - 家庭财务细节（trust 治理、持股结构、对账单、薪酬、investment 持仓 / 金额）
+> - 第三方个人的 DD 文档（即便全是公开信息汇编出来——汇编 + 评判本身就是 sensitive）
+> - 私下对 advisor / 朋友 / 同事 / counterparty 的评论
+> - 任何 `audience` 不是 `external` 的文件
+>
+> **可以进 silva** 的典型内容：
+>
+> - 外部文章 clipping（如 Scott Adams _The Day You Became a Better Writer_）
+> - 公开主题的原创 deep-read / 分析（如 SpaceX S-1 财务分析、DXYZ 估值模型、Anthropic 产品追踪）
+> - 技术研究 / 工程笔记（如 Godot WASM constraints）
+> - 引用全部基于公开信息、且对第三方公司 / 产品 / 技术（不是个人）的研究
+
 > **scope**: private (`@xdanger`) silva
-> **role**: Kros 个人的外部知识 + 原创合成累积"林"
+> **role**: Kros 个人的**公开**外部知识 + **公开性质**的原创合成累积"林"
+> **publication**: GitHub public repo + GitHub Pages
 
 ## silva 是什么
 
-*silva*（拉丁文「林」）来自 Quintilian / Statius 的修辞学传统，本意是"writer 笔下尚未加工的素材丰盈状态"——既是字面意义的森林（heterogeneous、accretive、organic），也是 raw material 的隐喻。本目录预期 **heterogeneity**：
+_silva_（拉丁文「林」）来自 Quintilian / Statius 的修辞学传统，本意是"writer 笔下尚未加工的素材丰盈状态"——既是字面意义的森林（heterogeneous、accretive、organic），也是 raw material 的隐喻。本目录预期 **heterogeneity**：
 
-- 外部摘抄（*Economist* 文章、研究报告 digest）
+- 外部摘抄（_Economist_ 文章、研究报告 digest）
 - Kros 原创合成（财报分析、估值模型、ad-hoc deep-read）
 - 持续追踪（如 `anthropic-products.md` 的 Anthropic 产品时间线）
 - 技术参考（Godot WASM constraints、infrastructure 笔记）
@@ -31,19 +53,19 @@ silva/
 
 ### YYYY/ 还是根目录？
 
-| 情况 | 归宿 | 理由 |
-|---|---|---|
-| 一次性写完、之后只 minor revise 的研究 / 摘抄 / 分析 / clipping | `YYYY/` | 主流情况；99% 文件归这里 |
-| 持续滚动更新、几乎每天都有新增的"知识库"类长文 | 根 | `anthropic-products.md` 是当前唯一例子（scheduled task 每天累积 Anthropic 产品时间线）。**新增必须谨慎**——大部分"会更新"的文件其实是 minor revise 性质，仍归 `YYYY/` |
+| 情况                                                            | 归宿    | 理由                                                                                                                                                                 |
+| --------------------------------------------------------------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 一次性写完、之后只 minor revise 的研究 / 摘抄 / 分析 / clipping | `YYYY/` | 主流情况；99% 文件归这里                                                                                                                                             |
+| 持续滚动更新、几乎每天都有新增的"知识库"类长文                  | 根      | `anthropic-products.md` 是当前唯一例子（scheduled task 每天累积 Anthropic 产品时间线）。**新增必须谨慎**——大部分"会更新"的文件其实是 minor revise 性质，仍归 `YYYY/` |
 
 判定 test：**"这份文件 12 个月后还会被定期追加吗？"** 答案肯定 → 根。任何"也许会、可能不会、看情况"的犹豫 → `YYYY/`。
 
 ### `YYYY/` 的 `YYYY` 取什么年份？——按 `source_type` 分两类
 
-| `source_type` | `YYYY` 取什么 | `created` 字段表示 |
-|---|---|---|
-| `own_analysis` / `tracking` / `summary`（包含 Kros 自己的合成） | **Kros 写这份文件的年份** | Kros 写这份文件的日子 |
-| `clipping` / `reference`（纯外部内容、Kros 只做保存） | **原始来源发表的年份** | 原始来源发表日（粒度可到 YYYY / YYYY-MM / YYYY-MM-DD） |
+| `source_type`                                                   | `YYYY` 取什么             | `created` 字段表示                                     |
+| --------------------------------------------------------------- | ------------------------- | ------------------------------------------------------ |
+| `own_analysis` / `tracking` / `summary`（包含 Kros 自己的合成） | **Kros 写这份文件的年份** | Kros 写这份文件的日子                                  |
+| `clipping` / `reference`（纯外部内容、Kros 只做保存）           | **原始来源发表的年份**    | 原始来源发表日（粒度可到 YYYY / YYYY-MM / YYYY-MM-DD） |
 
 理由：clipping 类的"内容年份"是源材料的年份，不是 Kros 保存它的年份。把 2007 年 Scott Adams 的文章放在 `silva/2026/` 会让"silva/2026/ 装的是 2026 年的内容"这条 mental model 失真——按源年份归档保留了 silva 作为"时间组织的知识库"的可读性。
 
@@ -60,12 +82,12 @@ clipping 类用 `clipped_at:` 字段记录 Kros 保存它的日子（**与 `crea
 ```yaml
 ---
 title: SpaceX S-1 2026 Financial Analysis
-created: 2026-05-21              # 必填。= Kros 写这份文件的日子；YYYY/ 子目录据此决定；filename 前缀 YYYYMMDD 与之对齐
-updated: 2026-05-21              # 必填。内容刷新日；可与 created 相同
-status: stable                   # 建议。draft | stable | superseded
-audience: kros-only              # 建议。kros-only | family | external（决定将来能否提级到 @family/silva 或公开）
-topic: [wealth, spacex, ipo]     # 建议。话题标签，flat list；替代了"主题子目录"职能
-source_type: [own_analysis]      # 建议。own_analysis | summary | tracking | reference | clipping
+created: 2026-05-21 # 必填。= Kros 写这份文件的日子；YYYY/ 子目录据此决定；filename 前缀 YYYYMMDD 与之对齐
+updated: 2026-05-21 # 必填。内容刷新日；可与 created 相同
+status: stable # 建议。draft | stable | superseded
+audience: kros-only # 建议。kros-only | family | external（决定将来能否提级到 @family/silva 或公开）
+topic: [wealth, spacex, ipo] # 建议。话题标签，flat list；替代了"主题子目录"职能
+source_type: [own_analysis] # 建议。own_analysis | summary | tracking | reference | clipping
 ---
 ```
 
@@ -75,16 +97,16 @@ source_type: [own_analysis]      # 建议。own_analysis | summary | tracking | 
 ---
 title: The Day You Became a Better Writer
 author: Scott Adams
-created: "2007-06"               # 必填。= 原始来源发表日；粒度可到 YYYY / YYYY-MM / YYYY-MM-DD（YAML date 不接受月精度时用字符串）
-updated: 2026-05-14              # 必填。这份 clip 上次刷新的日子（含元数据维护）
-clipped_at: 2026-05-14           # clipping 专属。Kros 把它收进 silva 的日子
+created: "2007-06" # 必填。= 原始来源发表日；粒度可到 YYYY / YYYY-MM / YYYY-MM-DD（YAML date 不接受月精度时用字符串）
+updated: 2026-05-14 # 必填。这份 clip 上次刷新的日子（含元数据维护）
+clipped_at: 2026-05-14 # clipping 专属。Kros 把它收进 silva 的日子
 source_type: [clipping]
 status: stable
 audience: external
 topic: [writing, communication, style-guide]
-source_original_url: https://...  # 原始 URL（即便已失效也记录，方便去 Wayback Machine）
-source_archive_url: https://web.archive.org/web/*/...    # Internet Archive 备份点（如已存档）
-source_mirror: https://...        # Kros 自己的镜像 / 局部副本（如有）
+source_original_url: https://... # 原始 URL（即便已失效也记录，方便去 Wayback Machine）
+source_archive_url: https://web.archive.org/web/*/... # Internet Archive 备份点（如已存档）
+source_mirror: https://... # Kros 自己的镜像 / 局部副本（如有）
 source_note: |
   hosting platform / 原文章背景 / link rot 提示等
 ---
@@ -106,11 +128,11 @@ source_note: |
 
 `YYYY/` 下的文件——**前缀按 `created` 的实际粒度**：
 
-| `created` 粒度 | filename 形式 | 例 |
-|---|---|---|
-| 知道到天（`YYYY-MM-DD`） | `YYYYMMDD_slug.md` | `20260521_economist_musk-unproven-technology_briefing.md` |
-| 只知道月（`YYYY-MM`） | `YYYYMM_slug.md` | 假设 Adams 的文章 URL 给到月：`200706_scott-adams-...md`（**当前用法是无前缀；URL 月粒度不足以驱动文件名差异化**） |
-| 只知道年（`YYYY`） | `slug.md`（无前缀，年在文件夹里） | `scott-adams-the-day-you-became-a-better-writer.md`（在 `silva/2007/` 里） |
+| `created` 粒度           | filename 形式                     | 例                                                                                                                 |
+| ------------------------ | --------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| 知道到天（`YYYY-MM-DD`） | `YYYYMMDD_slug.md`                | `20260521_economist_musk-unproven-technology_briefing.md`                                                          |
+| 只知道月（`YYYY-MM`）    | `YYYYMM_slug.md`                  | 假设 Adams 的文章 URL 给到月：`200706_scott-adams-...md`（**当前用法是无前缀；URL 月粒度不足以驱动文件名差异化**） |
+| 只知道年（`YYYY`）       | `slug.md`（无前缀，年在文件夹里） | `scott-adams-the-day-you-became-a-better-writer.md`（在 `silva/2007/` 里）                                         |
 
 slug 用 lowercase + 连字符 + 描述性（参 `@family/docs/naming-rules.md`）。
 
@@ -135,6 +157,20 @@ silva 文件一旦放好就永不挪动：
 4. **写 frontmatter**：至少 `title` + `created` + `updated`，建议补 `status` / `audience` / `topic` / `source_type`；clipping 类必含 `clipped_at` + `source_*` 字段族
 5. **写内容**——结构由内容驱动，无固定模板
 6. **如内容引用其他 silva / canon 文件**，用相对路径（`../canon/family-trust.md` 或 `./other-file.md` 视位置而定）
+
+## 准入 decision tree
+
+silva 内容已是 GitHub Pages 公开发布（见顶部 warning）。写之前按下面分流：
+
+| content 性质                                                   | 去哪里                                                                                 |
+| -------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| 含 Kros / 家人 / 第三方个人信息                                | `notes/` 或 `memory/`（绝不 silva）                                                    |
+| trust 治理决策、家庭事务规划、家庭财务                         | `areas/wealth/` 或 `areas/{相关 area}/`、或对应 project（不进 silva）                  |
+| 对第三方 individual 的 DD（real names + red flags + 私人背景） | 对应 project 文件夹（如 `@veronica/projects/.../insurance/`）或 `notes/`（不进 silva） |
+| 对 advisor / 朋友 / 同事 / counterparty 的私下评论             | `notes/` 或 `memory/`（绝不进入任何共享 scope 子目录）                                 |
+| 公开主题的原创合成 / 外部 clipping / 技术研究                  | **silva**——前提是 100% 不含上述任何 sensitive content                                  |
+
+第三方**公司 / 产品 / 技术**的研究 OK；第三方**个人**的 DD 不 OK。**有疑虑就不进 silva**——下放到 notes/ 或 areas/ 永远比"事后从 GitHub history 抹掉"代价小（git history 抹不干净，crawler 已经抓过）。
 
 ## 写 silva 时常踩的坑
 
